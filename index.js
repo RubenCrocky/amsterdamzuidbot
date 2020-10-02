@@ -65,6 +65,7 @@ client.on("guildMemberRemove", member => {
 
     var leaveEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+        .setThumbnail('')
         .setColor("#FF0000")
         .setFooter("Gebruiker geleaved")
         .setTimestamp();

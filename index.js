@@ -30,6 +30,85 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.login(process.env.token);
+
+client.on("guildMemberAdd", member => {
+
+    // var role = member.guild.roles.cache.get('462166173690232842');
+
+    // if (!role) return;
+
+    // member.roles.add(role);
+
+
+    con.query(`SELECT IDRole FROM rollen WHERE IDUser = '${member.user.id}'`, (err, rows) => {
+
+        if (err) throw err;
+
+        if (rows.length > 0) {
+
+            for (let index = 0; index < rows.length; index++) {
+                const role = rows[index];
+
+                member.roles.add(role.IDRole);
+            }
+
+        }
+
+    });
+
+
+    var channel = member.guild.channels.cache.get('739591916836094032');
+
+    if (!channel) return;
+
+    // channel.send(`Welkom bij de server ${member}`);
+
+    var joinEmbed = new discord.MessageEmbed()
+        .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+        .setDescription(`Hoi ${member.user.username}, **Welkom op de server**`)
+        .setColor("#00FF00")
+        .setFooter("Gebruiker gejoined")
+        .setTimestamp();
+
+    channel.send(joinEmbed);
+
+});
+
+
+client.on("guildMemberRemove", member => {
+
+    var channel = member.guild.channels.cache.get('739591916836094032');
+
+    if (!channel) return;
+
+    var leaveEmbed = new discord.MessageEmbed()
+        .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+        .setColor("#FF0000")
+        .setFooter("Gebruiker geleaved")
+        .setTimestamp();
+
+    channel.send(leaveEmbed);
+
+});
+
+client.on("messageDelete", messageDeleted => {
+
+    if (messageDeleted.author.bot) return;
+
+    var content = messageDeleted.content;
+    if (!content) content = "Geen tekst te vinden";
+
+    var respone = `Bericht ${messageDeleted.id} is verwijderd uit ${messageDeleted.channel}\n **Bericht:** ${content}`;
+
+    var embed = new discord.MessageEmbed()
+        .setAuthor(`${messageDeleted.author.id} ${messageDeleted.author.tag}`, `${messageDeleted.author.avatarURL({ size: 4096 })}`)
+        .setDescription(respone)
+        .setTimestamp()
+        .setColor("#FF0000");
+
+    client.channels.cache.find(c => c.name == "logs").send(embed);
+
+});
  
 client.on("ready", async () => {
  
@@ -59,44 +138,5 @@ client.on("message", async message => {
 
     if(commands) commands.run(client, message, arguments);
 
-    if(command === `${prefix}kljgldjklgj`){
-
-        message.channel.send('https://imgur.com/5yiipSF ');
-
-    
-    };
-
-    if(command === `${prefix}jklgjdklj`){
-
-        message.channel.send('Dit is het Amsterdam Medisch Centrum! \n\n **De bouwvakkers en de gemeente van Amsterdam Zuid doen er alles aan om zo snel mogelijk het ziekenhuis ingericht te hebben en operationeel te krijgen!** \n De ramen zijn nog in vertraging! 😂 \n <@&746381038963523785> ');
-
-    
-    };
-
-    
-    if(command === `${prefix}jgkldjklgj`){
-
-        var Embed = new discord.MessageEmbed()
-        .setTitle('Bedrijf kopen in Amsterdam Zuid!')
-        .setDescription("Hallo allemaal. Zoals jullie weten werken we hard aan de map en we lanceren ook een bedrijventerrein. Nu vonden we het leuk om misschien wel jullie een bedrijf te laten maken. Dus je kan je eigen bedrijf **Kopen**. Prijzen staan hieronder")
-        .setColor("#0099ff")
-        .addFields(
-            {name: "Gewoon basic bedrijf.",value: "30 Robux."},
-            {name: "Gewoon basic bedrijf. + Inrichting binnenkant",value: "50 Robux."},
-            {name: "Andere dingen in overleg met de developers als het mogelijk is.",value: "Dan is de prijs overeen te komen."},
-            {name: "Ja ik wil zo een bedrijf met men bedrijf naam.!",value: "Maak dan een **__Hulp__** ticket aan en dan zullen we uw verder helpen."},
-        )
-        .setThumbnail('')
-        .setTimestamp()
-        .setFooter("Development Team Amsterdam Zuid.");
-
-        message.channel.send(Embed);
-
-        if(command === `${prefix}jklgjdljgld`){
-    
-            message.channel.send("@here");
-    
-        }
-    
-    };
+  
 });

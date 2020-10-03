@@ -48,6 +48,7 @@ client.on("guildMemberAdd", member => {
     var joinEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
         .setDescription(`Hoi ${member.user.username}, **Welkom op de server**`)
+        .setThumbnail(member.user.displayAvatarURL)
         .setColor("#00FF00")
         .setFooter("Gebruiker gejoined")
         .setTimestamp();
@@ -65,7 +66,7 @@ client.on("guildMemberRemove", member => {
 
     var leaveEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
-        .setThumbnail('')
+        .setThumbnail(member.user.displayAvatarURL)
         .setColor("#FF0000")
         .setFooter("Gebruiker geleaved")
         .setTimestamp();

@@ -55,7 +55,7 @@ client.on("guildMemberAdd", member => {
         .setFooter("Gebruiker gejoined")
         .setTimestamp();
 
-    channel.send(joinEmbed);
+    channel.send(joinEmbed),
 
     channel.send(logChannel);
 

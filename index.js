@@ -90,7 +90,7 @@ client.on("messageDelete", messageDeleted => {
         .setTimestamp()
         .setColor("#FF0000");
 
-    client.channels.cache.find(c => c.name == "logs").send(embed);
+    client.channels.cache.find(c => c.id == "740665347820224562").send(embed);
 
 });
  

@@ -40,6 +40,8 @@ client.on("guildMemberAdd", member => {
     // member.roles.add(role);
 
     var channel = member.guild.channels.cache.get('739591916836094032');
+    var logChannel = member.guild.channels.cache.get('740665347820224562');
+
 
     if (!channel) return;
 
@@ -55,12 +57,16 @@ client.on("guildMemberAdd", member => {
 
     channel.send(joinEmbed);
 
+    channel.send(logChannel);
+
+
 });
 
 
 client.on("guildMemberRemove", member => {
 
     var channel = member.guild.channels.cache.get('739591916836094032');
+    var logChannel = member.guild.channels.cache.get('740665347820224562');
 
     if (!channel) return;
 
@@ -72,6 +78,8 @@ client.on("guildMemberRemove", member => {
         .setTimestamp();
 
     channel.send(leaveEmbed);
+
+    channel.send(logChannel);
 
 });
 

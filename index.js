@@ -77,7 +77,7 @@ client.on("guildMemberRemove", member => {
         .setFooter("Gebruiker geleaved")
         .setTimestamp();
 
-    channel.send(leaveEmbed);
+    channel.send(leaveEmbed),
 
     channel.send(logChannel);
 

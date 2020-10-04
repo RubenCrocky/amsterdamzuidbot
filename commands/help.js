@@ -19,7 +19,6 @@ module.exports.run = async (bot, message, args) => {
             {name:"!announcement", value:"Zend hiermee een announcement naar de discord server!"},
             {name:"!claim", value:"Claim een ticket"},
             {name:"!clear", value:"Verwijder berichten"},
-            {name:"!bug", value:"Zend hiermee een bug naar de developers"},
             {name:"LET EROP", value:"ER word nog hard gewerkt aan commands."}
     
         )
@@ -27,10 +26,10 @@ module.exports.run = async (bot, message, args) => {
        
         message.author.send(helpEmbed);
     
-        message.channel.send("Alle commando's staan in je privé berichten!");
+        message.channel.send("Alle commando's staan in je privé berichten! :mailbox_with_mail: ");
     
     } catch (error) {
-        message.reply("Er is iets fout gebeurd");
+        message.reply("Er is iets fout gebeurd!");
     }
     
 };

@@ -82,7 +82,7 @@ client.on("messageDelete", messageDeleted => {
     var content = messageDeleted.content;
     if (!content) content = "Geen tekst te vinden";
 
-    var respone = `Bericht ${messageDeleted.id} is verwijderd uit ${messageDeleted.channel}\n **Bericht:** ${content}`;
+    var respone = `Bericht van user met ID: ${messageDeleted.id} is verwijderd uit ${messageDeleted.channel}\n **Hij/Zij zond vorig bericht Bericht:** ${content}`;
 
     var embed = new discord.MessageEmbed()
         .setAuthor(`${messageDeleted.author.id} ${messageDeleted.author.tag}`, `${messageDeleted.author.avatarURL({ size: 4096 })}`)

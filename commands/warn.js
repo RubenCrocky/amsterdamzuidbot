@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("sorry jij kan dit niet");
 
-    if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
+    if (!args[0]) return message.reply("Geen gebruiker opgegeven. *Warnen doe je door !warn @persoon reden*");
 
     if (!args[1]) return message.reply("Gelieve een redenen op te geven.");
 

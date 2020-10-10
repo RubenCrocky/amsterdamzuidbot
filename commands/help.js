@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
             {name:"!suggestie", value:"Zend hiermee een suggestie naar de developers"},
             {name:"!faq", value:"Krijg de Veelgestelde vragen in een mooi berichtje"},
             {name:"!help", value:"Krijg dit te zien"},
-            {name:"!Permissie Commands", value:"Deze commands kan je enkel uitvoeren als je bepaalde permissies heb!"},
+            {name:"Permissie Commands", value:"Deze commands kan je enkel uitvoeren als je bepaalde permissies heb!"},
             {name:"!announcement", value:"Zend hiermee een announcement naar de discord server!"},
             {name:"!claim", value:"Claim een ticket"},
             {name:"!clear", value:"Verwijder berichten"},
